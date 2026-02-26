@@ -39,7 +39,17 @@ export const useSpeech = () => {
                         voice = validVoices.find(v => v.name.includes("Huihui") || v.name.includes("Yaoyao") || v.name.includes("Kangkang") || v.name.includes("Ting-Ting"));
                     }
                     if (!voice && targetBaseLang === 'es') {
-                        voice = validVoices.find(v => v.name.includes("Helena") || v.name.includes("Laura") || v.name.includes("Pablo") || v.name.includes("Monica"));
+                        // Include common iOS / Android Spanish voices for better accent quality
+                        voice = validVoices.find(v =>
+                            v.name.includes("Helena") ||
+                            v.name.includes("Laura") ||
+                            v.name.includes("Pablo") ||
+                            v.name.includes("Monica") ||
+                            v.name.includes("Paulina") ||
+                            v.name.includes("Jorge") ||
+                            v.name.includes("Diego") ||
+                            v.name.includes("Luciana")
+                        );
                     }
 
                     // 3. Third priority: Any voice matching the exact locale (e.g., en-US)
@@ -63,8 +73,10 @@ export const useSpeech = () => {
             }
 
             // Fine-tuned rates: Slower for languages that usually speak fast
+            // Note: Mobile TTS engines tend to read very fast even with rate < 1.0. 
+            // We lower it aggressively for Spanish.
             if (langCode.startsWith("es")) {
-                utterance.rate = 0.65; // Spanish needs to be significantly slower for kids
+                utterance.rate = 0.55; // Aggressively slow for Spanish on mobile
             } else if (["fr-FR", "ja-JP", "ko-KR", "zh-CN"].includes(langCode)) {
                 utterance.rate = 0.75;
             } else {
