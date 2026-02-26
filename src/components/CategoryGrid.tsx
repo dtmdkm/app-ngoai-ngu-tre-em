@@ -15,20 +15,20 @@ export default function CategoryGrid({ categories, onSelect }: { categories: Cat
                         whileHover={{ scale: 1.03, y: -4 }}
                         whileTap={{ scale: 0.97 }}
                         onClick={() => onSelect(cat)}
-                        className={`group relative flex flex-col items-center justify-center p-8 rounded-[2rem] shadow-sm hover:shadow-xl cursor-pointer transition-all border-[3px] border-white/60 dark:border-white/5 overflow-hidden ${cat.color}`}
+                        className={`group relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-[2rem] shadow-sm hover:shadow-xl cursor-pointer transition-all border-[3px] border-white/60 dark:border-white/5 overflow-hidden ${cat.color}`}
                     >
                         {/* Glossy overlay */}
                         <div className="absolute top-0 left-0 w-full h-1/2 bg-white/40 dark:bg-black/10 rounded-t-[2.5rem]"></div>
 
                         <motion.div
-                            className="relative z-10 mb-6 bg-white/90 dark:bg-white/20 p-4 sm:p-6 rounded-[2rem] shadow-sm transform transition-transform"
+                            className="relative z-10 mb-5 sm:mb-6 bg-white/90 dark:bg-white/20 p-4 sm:p-6 rounded-[2rem] shadow-sm transform transition-transform"
                             whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                             transition={{ duration: 0.5 }}
                         >
-                            <span className="text-6xl md:text-7xl drop-shadow-md block leading-none">{cat.emoji}</span>
+                            <span className="text-5xl md:text-7xl drop-shadow-md block leading-none">{cat.emoji}</span>
                         </motion.div>
 
-                        <h2 className="relative z-10 text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                        <h2 className="relative z-10 text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors text-center px-2">
                             {cat.name_vi}
                         </h2>
 

@@ -77,43 +77,43 @@ export default function QuizModal({
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.8, y: 50, opacity: 0 }}
                     transition={{ type: "spring", bounce: 0.5 }}
-                    className="relative w-full max-w-4xl bg-[#fdfbf7] dark:bg-slate-900 rounded-[3rem] p-6 sm:p-10 shadow-2xl flex flex-col items-center border-[8px] border-white/90 dark:border-slate-800 overflow-hidden min-h-[500px]"
+                    className="relative w-full max-w-4xl bg-[#fdfbf7] dark:bg-slate-900 rounded-3xl sm:rounded-[3rem] p-4 sm:p-8 lg:p-10 shadow-2xl flex flex-col items-center border-[4px] sm:border-[8px] border-white/90 dark:border-slate-800 overflow-hidden min-h-[400px] sm:min-h-[500px]"
                 >
                     <motion.button
                         whileHover={{ scale: 1.1, rotate: 90 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={onClose}
-                        className="absolute top-5 right-5 z-20 p-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-full text-slate-400 dark:text-slate-300 hover:text-rose-500 transition-colors shadow-sm"
+                        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 p-2 sm:p-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-full text-slate-400 dark:text-slate-300 hover:text-rose-500 transition-colors shadow-sm"
                     >
-                        <X size={32} strokeWidth={3} />
+                        <X className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={3} />
                     </motion.button>
 
                     {/* Score display */}
-                    <div className="absolute top-8 left-8 flex items-center gap-2 bg-yellow-100 dark:bg-yellow-900/40 text-yellow-600 dark:text-yellow-400 px-4 py-2 rounded-full font-black text-xl border-2 border-yellow-300 dark:border-yellow-700/50">
-                        <Trophy size={24} fill="currentColor" /> {score}
+                    <div className="absolute top-4 left-4 sm:top-8 sm:left-8 flex items-center gap-1 sm:gap-2 bg-yellow-100 dark:bg-yellow-900/40 text-yellow-600 dark:text-yellow-400 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-black text-lg sm:text-xl border sm:border-2 border-yellow-300 dark:border-yellow-700/50">
+                        <Trophy className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" /> {score}
                     </div>
 
                     {/* The Question */}
-                    <div className="mt-8 mb-12 flex flex-col items-center gap-4">
-                        <span className="text-xl font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Từ này là gì nhỉ?</span>
-                        <div className="flex items-center gap-4">
-                            <h2 className="text-6xl sm:text-7xl font-black text-blue-600 dark:text-blue-400 capitalize drop-shadow-sm">
+                    <div className="mt-8 sm:mt-8 mb-6 sm:mb-12 flex flex-col items-center gap-2 sm:gap-4">
+                        <span className="text-base sm:text-xl font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-center">Từ này là gì nhỉ?</span>
+                        <div className="flex items-center gap-3 sm:gap-4">
+                            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black text-blue-600 dark:text-blue-400 capitalize drop-shadow-sm">
                                 {questionWord.translations.en.word}
                             </h2>
                             <motion.button
                                 whileHover={{ scale: 1.1, rotate: 15 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => speak(questionWord.translations.en.word, "en-US")}
-                                className="bg-blue-100 dark:bg-blue-900/50 p-4 rounded-full text-blue-500 hover:bg-blue-200 transition-colors"
+                                className="bg-blue-100 dark:bg-blue-900/50 p-2 sm:p-4 rounded-full text-blue-500 hover:bg-blue-200 transition-colors"
                             >
-                                <Volume2 size={32} strokeWidth={3} />
+                                <Volume2 className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={3} />
                             </motion.button>
                         </div>
-                        <span className="text-lg text-slate-400 font-medium">/{questionWord.translations.en.phonetic}/</span>
+                        <span className="text-sm sm:text-lg text-slate-400 font-medium tracking-wide">/{questionWord.translations.en.phonetic}/</span>
                     </div>
 
                     {/* The Choices Grid */}
-                    <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-2xl px-2">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 w-full max-w-2xl px-1 sm:px-2">
                         {options.map((opt, i) => {
                             const isSelected = selectedId === opt.id;
                             const isTarget = opt.id === questionWord.id;
@@ -144,18 +144,18 @@ export default function QuizModal({
                                     }
                                     transition={{ duration: 0.4 }}
                                     onClick={() => handleSelect(opt)}
-                                    className={`relative flex flex-col items-center justify-center p-6 sm:p-8 rounded-[2rem] border-[4px] transition-all duration-300 ${btnClass}`}
+                                    className={`relative flex flex-col items-center justify-center p-3 sm:p-6 lg:p-8 rounded-[1.5rem] sm:rounded-[2rem] border-[3px] sm:border-[4px] transition-all duration-300 ${btnClass}`}
                                 >
-                                    <span className="text-6xl sm:text-7xl mb-4 drop-shadow-md">{opt.emoji}</span>
-                                    <span className="text-xl sm:text-2xl font-black capitalize">{opt.word_vi}</span>
+                                    <span className="text-5xl sm:text-6xl lg:text-7xl mb-2 sm:mb-4 drop-shadow-md">{opt.emoji}</span>
+                                    <span className="text-lg sm:text-xl lg:text-2xl font-black capitalize text-center px-1 leading-tight">{opt.word_vi}</span>
 
                                     {isCorrect === true && isTarget && (
                                         <motion.div
                                             initial={{ scale: 0, opacity: 0 }}
                                             animate={{ scale: 1, opacity: 1 }}
-                                            className="absolute -top-4 -right-4 bg-yellow-400 p-2 rounded-full text-white shadow-lg"
+                                            className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 bg-yellow-400 p-1.5 sm:p-2 rounded-full text-white shadow-lg"
                                         >
-                                            <Star fill="currentColor" size={32} />
+                                            <Star className="w-5 h-5 sm:w-8 sm:h-8" fill="currentColor" />
                                         </motion.div>
                                     )}
                                 </motion.button>
@@ -170,9 +170,9 @@ export default function QuizModal({
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 onClick={generateQuestion}
-                                className="mt-10 px-8 py-4 bg-pink-500 hover:bg-pink-400 text-white rounded-full font-black text-xl lg:text-2xl shadow-xl flex items-center gap-3 transition-colors uppercase tracking-widest"
+                                className="mt-8 sm:mt-10 px-6 py-3 sm:px-8 sm:py-4 bg-pink-500 hover:bg-pink-400 text-white rounded-full font-black text-lg sm:text-xl lg:text-2xl shadow-xl flex items-center gap-2 sm:gap-3 transition-colors uppercase tracking-widest"
                             >
-                                {isCorrect ? "Câu tiếp theo" : "Thử lại nào"} <ArrowRight size={28} strokeWidth={3} />
+                                {isCorrect ? "Câu tiếp theo" : "Thử lại nào"} <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={3} />
                             </motion.button>
                         )}
                     </AnimatePresence>

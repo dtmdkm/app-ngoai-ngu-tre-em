@@ -29,14 +29,16 @@ export default function Home() {
       <header className={`flex flex-col items-center justify-center transition-all duration-500 ${selectedCategory ? 'gap-2 mb-8 mt-2' : 'gap-6 mb-16 mt-8'} relative w-full`}>
 
         {selectedCategory && (
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            onClick={() => setSelectedCategory(null)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 md:-left-4 flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full text-pink-500 dark:text-pink-400 font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all"
-          >
-            <ArrowLeft size={24} /> <span className="hidden md:inline">Quay lại</span>
-          </motion.button>
+          <div className="w-full flex justify-start md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:-left-4 mb-2 md:mb-0 z-20">
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              onClick={() => setSelectedCategory(null)}
+              className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full text-pink-500 dark:text-pink-400 font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all text-sm sm:text-base"
+            >
+              <ArrowLeft size={20} className="sm:w-6 sm:h-6" /> <span className="">Quay lại</span>
+            </motion.button>
+          </div>
         )}
 
         <motion.div
@@ -50,10 +52,10 @@ export default function Home() {
           )}
 
           <div className="relative">
-            <h1 className={`${selectedCategory ? 'text-4xl md:text-5xl tracking-tight' : 'text-5xl sm:text-6xl md:text-[5rem] tracking-tighter'} font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-center drop-shadow-sm py-2 px-6 transition-all`}>
+            <h1 className={`${selectedCategory ? 'text-3xl sm:text-4xl md:text-5xl tracking-tight' : 'text-4xl sm:text-5xl md:text-[5rem] tracking-tighter'} font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-center drop-shadow-sm py-2 px-2 sm:px-6 transition-all`}>
               {selectedCategory ? selectedCategory.name_vi : "K I D L I N G O"}
             </h1>
-            {!selectedCategory && <Crown size={32} strokeWidth={2.5} className="absolute -top-4 -right-1 text-yellow-400 rotate-12 drop-shadow-sm" fill="#facc15" />}
+            {!selectedCategory && <Crown size={24} strokeWidth={2.5} className="absolute -top-3 sm:-top-4 -right-2 sm:-right-1 text-yellow-400 rotate-12 drop-shadow-sm sm:w-8 sm:h-8" fill="#facc15" />}
           </div>
 
           {!selectedCategory && (
@@ -80,9 +82,9 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsQuizOpen(true)}
-                className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-b from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 text-white rounded-[2rem] font-bold text-lg lg:text-xl shadow-[0_10px_20px_-10px_rgba(16,185,129,0.5)] transition-all border-b-4 border-emerald-600 active:border-b-0 active:translate-y-1"
+                className="group flex items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-b from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 text-white rounded-[2rem] font-bold text-base sm:text-lg lg:text-xl shadow-[0_10px_20px_-10px_rgba(16,185,129,0.5)] transition-all border-b-4 border-emerald-600 active:border-b-0 active:translate-y-1"
               >
-                <Gamepad2 size={28} className="transition-transform group-hover:rotate-12" /> Làm bài trắc nghiệm nhé
+                <Gamepad2 size={24} className="sm:w-7 sm:h-7 transition-transform group-hover:rotate-12" /> Làm bài trắc nghiệm nhé
               </motion.button>
             </motion.div>
           )}

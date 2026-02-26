@@ -36,7 +36,7 @@ export default function FlashcardModal({ item, onClose }: { item: Vocabulary | n
                         exit={{ scale: 0.8, y: 50, opacity: 0 }}
                         transition={{ type: "spring", bounce: 0.5, duration: 0.6 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-4xl bg-[#fdfbf7] dark:bg-slate-900 rounded-[3rem] p-6 sm:p-10 shadow-2xl dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col items-center border-[6px] border-white/90 dark:border-slate-800 overflow-hidden"
+                        className="relative w-full max-w-4xl bg-[#fdfbf7] dark:bg-slate-900 rounded-3xl sm:rounded-[3rem] p-4 sm:p-8 lg:p-10 shadow-2xl dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col items-center border-4 sm:border-[6px] border-white/90 dark:border-slate-800 overflow-hidden max-h-[90vh] overflow-y-auto"
                     >
                         {/* Decorative Background Elements */}
                         <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-br from-[#fef08a] to-[#fbcfe8] opacity-30 dark:opacity-10 rounded-t-[2.5rem] pointer-events-none"></div>
@@ -46,9 +46,9 @@ export default function FlashcardModal({ item, onClose }: { item: Vocabulary | n
                             whileHover={{ scale: 1.1, rotate: 90 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={onClose}
-                            className="absolute top-5 right-5 z-20 p-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-full text-slate-400 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 transition-colors shadow-lg border-2 border-slate-100 dark:border-slate-700"
+                            className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 p-2 sm:p-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-full text-slate-400 dark:text-slate-300 hover:text-rose-500 dark:hover:text-rose-400 transition-colors shadow-lg border sm:border-2 border-slate-100 dark:border-slate-700"
                         >
-                            <X size={32} strokeWidth={3} />
+                            <X className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={3} />
                         </motion.button>
 
                         <div className="relative z-10 flex flex-col items-center gap-3 mb-10 w-full mt-2">
@@ -60,12 +60,12 @@ export default function FlashcardModal({ item, onClose }: { item: Vocabulary | n
                             >
                                 Từ vựng
                             </motion.div>
-                            <h2 className="text-5xl sm:text-7xl font-black tracking-tight text-slate-800 dark:text-slate-100 capitalize text-center leading-tight drop-shadow-sm px-4">
+                            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight text-slate-800 dark:text-slate-100 capitalize text-center leading-tight drop-shadow-sm px-2 sm:px-4">
                                 {item.word_vi}
                             </h2>
                         </div>
 
-                        <div className="relative z-10 w-full grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                        <div className="relative z-10 w-full grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-8">
                             {Object.entries(item.translations).map(([langKey, trans], index) => {
                                 const style = langStyles[langKey] || { label: langKey.toUpperCase(), flagCode: "un", bg: "bg-slate-100", text: "text-slate-600", border: "border-slate-300" };
                                 return (
@@ -77,27 +77,27 @@ export default function FlashcardModal({ item, onClose }: { item: Vocabulary | n
                                         whileHover={{ scale: 1.03, y: -6 }}
                                         whileTap={{ scale: 0.97 }}
                                         onClick={() => playSound(trans.word, trans.lang_code)}
-                                        className={`group flex flex-col items-center justify-center p-6 sm:p-8 ${style.bg} rounded-[2rem] shadow-sm hover:shadow-lg transition-all border-b-[6px] hover:border-b-[10px] ${style.border} active:border-b-0 active:translate-y-2 relative`}
+                                        className={`group flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 ${style.bg} rounded-2xl sm:rounded-[2rem] shadow-sm hover:shadow-lg transition-all border-b-4 sm:border-b-[6px] hover:border-b-[10px] ${style.border} active:border-b-0 active:translate-y-1 sm:active:translate-y-2 relative`}
                                     >
-                                        <div className="absolute top-4 left-5 flex items-center gap-2">
+                                        <div className="absolute top-2 left-3 sm:top-4 sm:left-5 flex items-center gap-1 sm:gap-2">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img src={`https://flagcdn.com/${style.flagCode}.svg`} width="24" alt="flag" className="rounded-sm shadow-sm" />
-                                            <span className={`text-sm sm:text-base font-black ${style.text} opacity-60 uppercase tracking-widest`}>{style.label}</span>
+                                            <img src={`https://flagcdn.com/${style.flagCode}.svg`} className="w-4 sm:w-6 rounded-sm shadow-sm" alt="flag" />
+                                            <span className={`text-[10px] sm:text-xs lg:text-base font-black ${style.text} opacity-70 uppercase tracking-wider sm:tracking-widest`}>{style.label}</span>
                                         </div>
-                                        <div className="mt-6 flex flex-col items-center gap-2 w-full">
-                                            <span className={`text-2xl sm:text-3xl font-black ${style.text} capitalize text-center w-full px-2 drop-shadow-sm leading-tight break-words`} style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
+                                        <div className="mt-5 sm:mt-6 flex flex-col items-center gap-1 sm:gap-2 w-full">
+                                            <span className={`text-xl sm:text-2xl lg:text-3xl font-black ${style.text} capitalize text-center w-full px-1 drop-shadow-sm leading-tight break-words`} style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
                                                 {trans.word}
                                             </span>
                                             {trans.phonetic && (
-                                                <span className={`text-sm sm:text-base font-medium text-slate-500 dark:text-slate-300 bg-white/50 dark:bg-white/10 px-3 py-1 rounded-full text-center mt-1`}>
+                                                <span className={`text-[10px] sm:text-sm lg:text-base font-medium text-slate-500 dark:text-slate-300 bg-white/50 dark:bg-white/10 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-center mt-1`}>
                                                     {trans.phonetic}
                                                 </span>
                                             )}
                                             <motion.div
                                                 whileHover={{ scale: 1.1, rotate: 15 }}
-                                                className="mt-2 bg-white/70 dark:bg-white/10 p-4 rounded-full shadow-sm group-hover:bg-white dark:group-hover:bg-white/20 transition-colors"
+                                                className="mt-1 sm:mt-2 bg-white/70 dark:bg-white/10 p-2 sm:p-3 lg:p-4 rounded-full shadow-sm group-hover:bg-white dark:group-hover:bg-white/20 transition-colors"
                                             >
-                                                <Volume2 size={36} className={`${style.text}`} strokeWidth={2.5} />
+                                                <Volume2 className={`w-5 h-5 sm:w-7 sm:h-7 lg:w-9 lg:h-9 ${style.text}`} strokeWidth={2.5} />
                                             </motion.div>
                                         </div>
                                     </motion.button>
