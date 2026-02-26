@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${font.className} bg-[#fdfbf7] text-slate-700 min-h-screen selection:bg-pink-300 selection:text-white dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light">
           {/* Background decorative blobs */}
           <div className="fixed top-[-10%] left-[-10%] w-[40vw] h-[40vw] min-w-[300px] min-h-[300px] bg-pink-200/40 dark:bg-purple-900/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
           <div className="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] min-w-[400px] min-h-[400px] bg-blue-200/40 dark:bg-indigo-900/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>

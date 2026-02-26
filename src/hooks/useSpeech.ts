@@ -28,7 +28,7 @@ export const useSpeech = () => {
                         (v.name.includes("Google") || v.name.includes("Premium") || v.name.includes("Natural") || v.name.includes("Online"))
                     );
 
-                    // 2. Second priority: Specific known good voices for Asian languages on Windows/Mac
+                    // 2. Second priority: Specific known good voices for Asian languages & Spanish on Windows/Mac
                     if (!voice && targetBaseLang === 'ja') {
                         voice = validVoices.find(v => v.name.includes("Ayumi") || v.name.includes("Ichiro") || v.name.includes("Haruka") || v.name.includes("Kyoko") || v.name.includes("Keita"));
                     }
@@ -37,6 +37,9 @@ export const useSpeech = () => {
                     }
                     if (!voice && targetBaseLang === 'zh') {
                         voice = validVoices.find(v => v.name.includes("Huihui") || v.name.includes("Yaoyao") || v.name.includes("Kangkang") || v.name.includes("Ting-Ting"));
+                    }
+                    if (!voice && targetBaseLang === 'es') {
+                        voice = validVoices.find(v => v.name.includes("Helena") || v.name.includes("Laura") || v.name.includes("Pablo") || v.name.includes("Monica"));
                     }
 
                     // 3. Third priority: Any voice matching the exact locale (e.g., en-US)
@@ -59,9 +62,14 @@ export const useSpeech = () => {
                 }
             }
 
-            // Fine-tuned rates: Slower for languages that usually speak fast (Asian languages and Spanish/French)
-            const slowLangs = ["es-ES", "fr-FR", "ja-JP", "ko-KR", "zh-CN"];
-            utterance.rate = slowLangs.includes(langCode) ? 0.75 : 0.85;
+            // Fine-tuned rates: Slower for languages that usually speak fast
+            if (langCode.startsWith("es")) {
+                utterance.rate = 0.65; // Spanish needs to be significantly slower for kids
+            } else if (["fr-FR", "ja-JP", "ko-KR", "zh-CN"].includes(langCode)) {
+                utterance.rate = 0.75;
+            } else {
+                utterance.rate = 0.85;
+            }
 
             // Sweet slightly high pitch for child-like friendliness
             utterance.pitch = 1.15;
