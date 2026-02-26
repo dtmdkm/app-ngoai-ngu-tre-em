@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-kid-yellow: #fef08a;
+  /* yellow-200 */
+  --color-kid-pink: #fbcfe8;
+  /* pink-200 */
+  --color-kid-mint: #a7f3d0;
+  /* emerald-200 */
+  --color-kid-blue: #bfdbfe;
+  /* blue-200 */
+}
+
+@layer base {
+  body {
+    background-color: #fdfbf7;
+    color: #334155;
+    /* slate-700 */
+  }
+}
